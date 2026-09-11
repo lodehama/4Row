@@ -9,8 +9,8 @@ class App:
         self.stock_list = {"삼성전자":250000,"SK하이닉스":1800000,"LG에너지솔루션":360000,"현대차":380000,"두산에너빌리티":90000}
         self.change_list = {}
         self.user_stock = {}
-        self.b = BuyStock(self.wallet, self.money, self.stock_list, self.change_list, self.user_stock)
-        self.s = SellStock(self.wallet, self.money, self.stock_list, self.change_list, self.user_stock)
+        # self.b = BuyStock(self.wallet, self.money, self.stock_list, self.change_list, self.user_stock)
+        # self.s = SellStock(self.wallet, self.money, self.stock_list, self.change_list, self.user_stock)
         self.c = ChangePrice(self.stock_list, self.change_list)
 
     def run(self):
@@ -45,10 +45,12 @@ class App:
             menu = input("1. 매수 / 2. 매도 / 3. 내일로 이동 / 4. 종료 : ")
 
             if menu == "1":
+                self.b = BuyStock(self.wallet, self.money, self.stock_list, self.change_list, self.user_stock)
                 self.user_stock, self.money = self.b.buy()
                 print("보유 수량:",self.user_stock)
 
             elif menu == "2":
+                self.s = SellStock(self.wallet, self.money, self.stock_list, self.change_list, self.user_stock)
                 self.user_stock, self.money = self.s.sell()
                 print("보유 수량:",self.user_stock)
 
@@ -79,5 +81,5 @@ class App:
             else:
                 print("1~4 중에서 입력해주세요.")
 
-# app = App()
-# app.run()
+app = App()
+app.run()
