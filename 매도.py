@@ -8,8 +8,6 @@ class SellStock:
 
     def sell(self):
         total_sell = 0
-        print(self.money)
-
         while True:
             name = input("매도할 주식을 입력해주세요: ")
             if name in self.user_stock:
