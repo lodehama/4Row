@@ -12,7 +12,7 @@ class SellStock:
         a = 0
         for i in self.stock_list:
             a += 1
-            # print(f"{a}) {i}: {stock_list[i]:,}원 / 등락률 : {change}%"")  # 이거 하면 마지막 거만 나옴
+            # print(f"{a}) {i}: {stock_list[i]:,}원 / 등락률: {change}%"")  # 이거 하면 마지막 거만 나옴
             print(f"{a}. {i}: {self.stock_list[i]:,}원 / 등락률: {self.change_list[i]}%")
 
         print(f"보유 주식: {self.user_stock}")
