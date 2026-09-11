@@ -6,11 +6,7 @@ class BuyStock:
         self.change_list = change_list
         self.user_stock = user_stock
 
-<<<<<<< HEAD
     def buy(self) :
-=======
-    def buy(self):
->>>>>>> 0680c37 (최종 수정)
         total_buy = 0
         print("===== 현재가 =====")
         a = 0

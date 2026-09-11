@@ -8,8 +8,6 @@ class SellStock:
 
     def sell(self):
         total_sell = 0
-<<<<<<< HEAD
-=======
         print("===== 현재가 =====")
         a = 0
         for i in self.stock_list:
@@ -19,7 +17,6 @@ class SellStock:
 
         print(f"보유 주식: {self.user_stock}")
 
->>>>>>> 0680c37 (최종 수정)
         while True:
             a = 0
             name = input("어떤 주식을 매도할까요?: ")
