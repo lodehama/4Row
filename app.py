@@ -80,6 +80,3 @@ class App:
 
             else:
                 print("1~4 중에서 입력해주세요.")
-
-app = App()
-app.run()
