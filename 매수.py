@@ -6,25 +6,26 @@ class BuyStock:
         self.change_list = change_list
         self.user_stock = user_stock
 
-    def buy(self) :
-
+    def buy(self):
         total_buy = 0
-        print('===== 현재가 =====')
+        print("===== 현재가 =====")
         a = 0
         for i in self.stock_list :
             a += 1
-            # print(f"{a}) {i}: {stock_list[i]:,}원 / 등락률 : {change}%"")  # 이거 하면 마지막 거만 나옴
-            print(f"{a}) {i}: {self.stock_list[i]:,}원 / 등락률 : {self.change_list[i]}%")
-        while True :
-            a = 0
-            stock_name = input('어떤 주식을 구매할까요?')
-            stock_number = input('몇 주 매수할까요?')
-            for i in self.stock_list :
-                if a+1 == int(stock_name) :
-                    print(f'{i} {stock_number}주 매수할게요.')
+            # print(f"{a}) {i}: {stock_list[i]:,}원 / 등락률: {change}%"")  # 이거 하면 마지막 거만 나옴
+            print(f"{a}. {i}: {self.stock_list[i]:,}원 / 등락률: {self.change_list[i]}%")
 
-                    ## 매수에 필요한 금액 계산 ##
-                    buy_price = self.stock_list[i] * int(stock_number)
+        print(f"보유 주식: {self.user_stock}")
+
+        while True:
+            a = 0
+            name = input("어떤 주식을 매수할까요?: ")
+            quantity = input("몇 주 매수할까요?: ")
+            for i in self.stock_list:
+                if a+1 == int(name):
+
+                    # 매수에 필요한 금액 계산
+                    buy_price = self.stock_list[i] * int(quantity)
 
                     if buy_price > self.money:
                         print("보유 현금이 부족합니다.")
@@ -33,17 +34,17 @@ class BuyStock:
                     total_buy += buy_price  # 총 매수액 계산
                     print(f"현금이 {self.money:,}원 남았습니다.")
 
-                    try :
-                        self.user_stock[i] += int(stock_number)
+                    try:
+                        self.user_stock[i] += int(quantity)
 
                         break
-                    except KeyError :
-                        self.user_stock[i] = int(stock_number)
+                    except KeyError:
+                        self.user_stock[i] = int(quantity)
                         break
                 a += 1
-            question = input('더 구매할까요? 1) 예   2) 아니요 : ')    
-            if question == '1' : continue
-            elif question =='2' : 
+            question = input("더 매수할까요? 1. 예 / 2. 아니요: ")    
+            if question == "1": continue
+            elif question == "2": 
                 print(f"오늘 총 매수금액: {total_buy:,}")
                 break
         self.save_stock()    # txt 파일에 저장

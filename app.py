@@ -38,24 +38,24 @@ class App:
             file.close()
 
         except FileNotFoundError:
-            print("아직 저장된 주식이 없습니다.")
+            # print("아직 저장된 주식이 없습니다.")
             pass
 
         while True:
-            menu = input("1. 매수 / 2. 매도 / 3. 내일로 이동 / 4. 종료 : ")
+            menu = input("1. 매수 / 2. 매도 / 3. 내일로 이동 / 4. 종료: ")
 
             if menu == "1":
                 self.b = BuyStock(self.wallet, self.money, self.stock_list, self.change_list, self.user_stock)
                 self.user_stock, self.money = self.b.buy()
-                print("보유 수량:",self.user_stock)
+                print("보유 주식:",self.user_stock)
 
             elif menu == "2":
                 self.s = SellStock(self.wallet, self.money, self.stock_list, self.change_list, self.user_stock)
                 self.user_stock, self.money = self.s.sell()
-                print("보유 수량:",self.user_stock)
+                print("보유 주식:",self.user_stock)
 
             elif menu == "3":
-                self.change_stock_price(self.stock_list, self.change_list)
+                self.c.change_stock_price()
                 print("============================")
                 print("날짜가 변경되었습니다.")
 
@@ -64,15 +64,15 @@ class App:
                 for name in self.user_stock:
                     stock_value += self.stock_list[name] * self.user_stock[name]
 
-                print(f"보유 현금 : {self.money:,}원")
-                print(f"보유 주식 가치 : {stock_value:,}원")
-                print(f"전재산 : {stock_value + self.money:,}원")
+                print(f"보유 현금: {self.money:,}원")
+                print(f"보유 주식 가치: {stock_value:,}원")
+                print(f"전재산: {stock_value + self.money:,}원")
                 print("============================")
 
                 a = 0
                 for i in self.stock_list:
                     a += 1
-                    print(f"{a}) {i}: {self.stock_list[i]:,}원 / 등락률 : {self.change_list[i]}%")
+                    print(f"{a}) {i}: {self.stock_list[i]:,}원 / 등락률: {self.change_list[i]}%")
 
             elif menu == "4":
                 print("종료합니다.")
