@@ -55,7 +55,7 @@ class App:
                 print("보유 수량:",self.user_stock)
 
             elif menu == "3":
-                self.change_stock_price(self.stock_list, self.change_list)
+                self.c.change_stock_price()
                 print("============================")
                 print("날짜가 변경되었습니다.")
 
