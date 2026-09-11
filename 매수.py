@@ -7,7 +7,6 @@ class BuyStock:
         self.user_stock = user_stock
 
     def buy(self) :
-
         total_buy = 0
         print('===== 현재가 =====')
         a = 0
